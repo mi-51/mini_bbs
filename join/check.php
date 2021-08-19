@@ -8,7 +8,7 @@ if(!isset($_SESSION['join'])){
 }
 
 if(!empty($_POST)){
-	$statement = $db->prepare('INSERT INTO members SET name=?, email=?, password=?, created=NOW()');
+	$statement = $db->prepare('INSERT INTO members SET name=?, email=?, password=?, picture=?, created= NOW()');
 	$statement->execute(array(
 		$_SESSION['join']['name'],
 		$_SESSION['join']['email'],
@@ -45,10 +45,10 @@ if(!empty($_POST)){
 	<dl>
 		<dt>ニックネーム</dt>
 		<dd><?php print(htmlspecialchars($_SESSION['join']['name'], ENT_QUOTES)); ?>
-        </dd>
+		</dd>
 		<dt>メールアドレス</dt>
 		<dd><?php print(htmlspecialchars($_SESSION['join']['email'], ENT_QUOTES)); ?>
-        </dd>
+		</dd>
 		<dt>パスワード</dt>
 		<dd>
 		【表示されません】
@@ -56,7 +56,7 @@ if(!empty($_POST)){
 		<dt>写真など</dt>
 		<dd>
 			<?php if($_SESSION['join']['image'] !== ''): ?>
-			<img src="../member_picture/<?php print(htmlspecialchars($_SESSION['join']['image'], ENT_QUOTES)); ?>" >
+			<img src="../member_picture/<?php print(htmlspecialchars($_SESSION['join']['image'], ENT_QUOTES)); ?>">
 			<?php endif; ?>
 		</dd>
 	</dl>
